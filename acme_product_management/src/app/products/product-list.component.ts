@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 
 import {ConvertToSpacesPipe} from "../shared/convert-to-spaces.pipe";
 import { IProduct } from "./product";
+import { StarComponent } from "../shared/star.component";
 
 @Component({
   selector: 'pm-products',
@@ -14,7 +15,8 @@ import { IProduct } from "./product";
     FormsModule,
     LowerCasePipe,
     CurrencyPipe,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
+    StarComponent
   ],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
@@ -71,5 +73,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.listFilter = 'cart';
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
   }
 }
